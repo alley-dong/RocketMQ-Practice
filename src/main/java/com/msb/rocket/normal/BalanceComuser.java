@@ -21,7 +21,8 @@ public class BalanceComuser {
         consumer.setNamesrvAddr("127.0.0.1:9876");
         //集群模式消费（默认就是，所以可以不用写）
         consumer.setMessageModel(MessageModel.CLUSTERING);
-       // consumer.setMaxReconsumeTimes(1); //最大重试次数
+        //最大重试次数
+        consumer.setMaxReconsumeTimes(10);
         // 订阅Topic
         consumer.subscribe("TopicTestDong", "*"); //tag  tagA|TagB|TagC
         //这里是消费者从哪里开始

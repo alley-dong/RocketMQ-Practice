@@ -40,7 +40,9 @@ public class ProducerInOrder {
             SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
                 @Override
                 public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
-                    Long id = (Long) arg;  //根据订单id选择发送queue
+                    // 根据订单id选择发送queue
+                    Long id = (Long) arg;
+                    // 通过取模来让消息进入对应的队列中。（分区顺序消息）
                     long index = id % mqs.size();
                     return mqs.get((int) index);
                 }
