@@ -33,7 +33,7 @@ public class TagFilterConsumer {
     public static void main(String[] args) throws InterruptedException, MQClientException, IOException {
 
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("TagFilterComsumer");
-        //todo 指定Namesrv地址信息.
+        // 指定Namesrv地址信息.
         consumer.setNamesrvAddr("127.0.0.1:9876");
         consumer.subscribe("TagFilterTest", "TagA || TagB");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
