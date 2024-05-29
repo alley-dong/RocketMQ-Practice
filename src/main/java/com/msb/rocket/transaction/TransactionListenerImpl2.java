@@ -39,7 +39,11 @@ public class TransactionListenerImpl2 implements TransactionListener {
         // return LocalTransactionState.COMMIT_MESSAGE; //这里本地事务执行成功了
         return LocalTransactionState.UNKNOW;//这里本地事务需要等待其他的（等待人脸识别的结果）
     }
-    //事务回查  默认是60s（不同的版本时间不同），一分钟检查一次
+
+    /**
+     * 注意： 如果executeLocalTransaction返回的不是UNKNOW，不会进入此方法
+     * 事务回查  默认是60s（不同的版本时间不同），一分钟检查一次
+     */
     @Override
     public LocalTransactionState checkLocalTransaction(MessageExt msg) {
         //打印每次回查的时间
