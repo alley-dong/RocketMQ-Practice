@@ -11,9 +11,9 @@ import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import java.util.List;
 
 /**
- * 集群消费：并发监听
+ * 集群消费：并发监听 - 测试不同消费者组下 会接受所有的生产者的消息。如果消费组相同 则会平分生产者的消息。
  */
-public class BalanceComuser {
+public class BalanceComuser2 {
     public static void main(String[] args) throws Exception {
         // 实例化消费者--推模式--订阅模式
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("dcl_balance_consumer");
@@ -34,6 +34,7 @@ public class BalanceComuser {
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
                                                             ConsumeConcurrentlyContext context) {
                 try {
+
                     for(MessageExt msg : msgs) {
                         String topic = msg.getTopic();
                         String msgBody = new String(msg.getBody(), "utf-8");

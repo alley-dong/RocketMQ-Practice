@@ -35,6 +35,7 @@ public class TagFilterConsumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("TagFilterComsumer");
         // 指定Namesrv地址信息.
         consumer.setNamesrvAddr("127.0.0.1:9876");
+        // 只订阅TagFilterTest主题下的 TagA和TagB的消息。
         consumer.subscribe("TagFilterTest", "TagA || TagB");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override

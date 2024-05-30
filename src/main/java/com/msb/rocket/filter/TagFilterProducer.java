@@ -35,6 +35,7 @@ public class TagFilterProducer {
 
         for (int i = 0; i < 10; i++) {
             Message msg = new Message("TopicTest666",
+                // 通过取余的方式，0 % 3 = 0，那么就是tags[0] = TagA
                 tags[i % tags.length],
                 "Hello world".getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult sendResult = producer.send(msg);

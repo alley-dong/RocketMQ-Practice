@@ -16,10 +16,10 @@ public class AsyncProducer {
         producer.setNamesrvAddr("127.0.0.1:9876");
         // 启动Producer实例
         producer.start();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10000; i++) {
             final int index = i;
             // 创建消息，并指定Topic，Tag和消息体
-            Message msg = new Message("Order_Topic", "TagA", "OrderID888",
+            Message msg = new Message("TopicTestDong-Cluster1", "TagA", "OrderID888",
                     "Hello world".getBytes(RemotingHelper.DEFAULT_CHARSET));
             // SendCallback接收异步返回结果的回调
             producer.send(msg, new SendCallback() {
